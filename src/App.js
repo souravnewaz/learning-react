@@ -7,13 +7,21 @@ import {users} from './usersData';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
+
   
   const [myuser, setUsers] = useState(users);
+
+  const addUsers = (newUser) => {
+    setUsers([...myuser, newUser]);
+  };
 
   const deleteCallback = (id)=>{
     const data = myuser.filter((user)=>user.id !== id);
     setUsers(data);
   }
+  const url = "http://localhost:8000/api/userlist";
+  const response = fetch(url);
+  console.log(response);
 
   return (
    
